@@ -278,34 +278,32 @@ Generic attributes are supported in class/field/method definitions as follows :
 
 <name> is the name of the attribute and <file_name> is the name of the file containing the data of the attribute (between double quotes). If the generic attribute is in the body of the method, the following logic is used : if it is the first statement in the method, the attribute will be added as a method attribute, otherwise it will be added as a Code attribute.
 
-<h1>Annotations</h1>
-Thanks to Iouri Kharon for implementing this. Here are his explanations :<br>
+## Annotations
+Thanks to Iouri Kharon for implementing this. Here are his explanations:
 
-<p>Added a new directive .annotation to create the AnnotationDefault,
-   RuntimeVisibleAnnotation, RuntimeInvisibleAnnotation,
-   RuntimeVisibeParameterAnnotation, RuntimeInvisibleParameterAnnotation
-   attributes. The directive arguments are verified to have valid values
-   and correct signatures.<br>
-   Complex (nested) annotations are supported as well as arrays of them.<br>
-   The generic format is:
-<pre>
-<annotation> = {
-    .annotation visible <classname>
-  | .annotation invisible <classname>>
-  | .annotation visibleparam <paramnum> <classname>
-  | .annotation invisibleparam <paramnum> <classname>
-  | .annotation default
+Added a new directive .annotation to create the AnnotationDefault, RuntimeVisibleAnnotation, RuntimeInvisibleAnnotation, RuntimeVisibeParameterAnnotation, RuntimeInvisibleParameterAnnotation attributes. The directive arguments are verified to have valid values
+   and correct signatures.
+   
+Complex (nested) annotations are supported as well as arrays of them.<br>
+The generic format is:
+
+    <annotation> = {
+      .annotation visible <classname>
+    | .annotation invisible <classname>>
+    | .annotation visibleparam <paramnum> <classname>
+    | .annotation invisibleparam <paramnum> <classname>
+    | .annotation default
          ........
     .end annotation
 
-Field format (except AnnotationDefault):
+    // Field format (except AnnotationDefault):
 
     <name> <signchar> = <value>*
-  | <name> @ = .annotation
+    | <name> @ = .annotation
             ........
     .end annotation
-}
-</pre>
+    }
+
 
 AnnotationDefault supports only one field and the <name> tag is not used. Nested annotations must be with the <name> tag and can have any number of fields. Besides, 'empty annotation' is forbidden for AnnotationDefault. Lastly, AnnotationDefault can be used only once for each method. Other annotation types can be used many times and will accumulate information.
 
