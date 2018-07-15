@@ -1,6 +1,6 @@
-Jasmin Syntax                               Jonathan Meyer, April 1996
+jasmin.Jasmin Syntax                               Jonathan Meyer, April 1996
 
-This file contains a simplified BNF version of the Jasmin syntax.
+This file contains a simplified BNF version of the jasmin.Jasmin syntax.
 
     jasmin_file ::=
         '.class' [ <access> ] <name> <break>

@@ -1,6 +1,6 @@
 /* --- Copyright Jonathan Meyer 1996. All rights reserved. -----------------
  > File:        jasmin/src/jasmin/ReservedWords.java
- > Purpose:     Reserved words for Jasmin
+ > Purpose:     Reserved words for jasmin.Jasmin
  > Author:      Jonathan Meyer, 10 July 1996
  */
 
@@ -26,7 +26,7 @@ abstract class ReservedWords {
     static {
         reserved_words = new Hashtable();
 
-        // Jasmin directives
+        // jasmin.Jasmin directives
         reserved_words.put(".annotation", new token(sym.DANNOTATION));
         reserved_words.put(".attribute", new token(sym.DATTRIBUTE));
         reserved_words.put(".bytecode", new token(sym.DBYTECODE));
@@ -51,7 +51,7 @@ abstract class ReservedWords {
         reserved_words.put(".signature", new token(sym.DSIGNATURE));
         reserved_words.put(".stack", new token(sym.DSTACK));
 
-        // reserved_words used in Jasmin directives
+        // reserved_words used in jasmin.Jasmin directives
         reserved_words.put("field", new token(sym.FIELD));
         reserved_words.put("from", new token(sym.FROM));
         reserved_words.put("method", new token(sym.METHOD));

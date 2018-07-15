@@ -5,7 +5,7 @@
 ; -------------------------------------------------------------------------
 
 ;
-; Illustrates lookupswitch and tableswitch syntax for Jasmin
+; Illustrates lookupswitch and tableswitch syntax for jasmin.Jasmin
 ;
 
 .class public examples/Switch

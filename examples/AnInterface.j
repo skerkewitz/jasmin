@@ -1,11 +1,11 @@
 ; --- Copyright Jonathan Meyer 1996. All rights reserved. -----------------
 ; File:      jasmin/examples/AnInterface.j
 ; Author:    Jonathan Meyer, 1 Oct 1996
-; Purpose:   A Java interface written in Jasmin
+; Purpose:   A Java interface written in jasmin.Jasmin
 ; -------------------------------------------------------------------------
 
 ;
-; This file shows how to use Jasmin to define an interface. It
+; This file shows how to use jasmin.Jasmin to define an interface. It
 ; is like the Java code:
 ; 
 ; interface public examples.AnInterface {

@@ -1,11 +1,11 @@
 ; --- Copyright Jonathan Meyer 1996. All rights reserved. -----------------
 ; File:      jasmin/examples/HelloWeb.j
 ; Author:    Jonathan Meyer, 10 July 1996
-; Purpose:   Demonstration of a Jasmin-created applet
+; Purpose:   Demonstration of a jasmin.Jasmin-created applet
 ; -------------------------------------------------------------------------
 ; HelloWeb.j
 
-; This demonstrates how you can use Jasmin to create an applet.
+; This demonstrates how you can use jasmin.Jasmin to create an applet.
 
 ; The code below is like the Java code:
 ;

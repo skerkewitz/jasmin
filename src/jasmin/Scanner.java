@@ -1,10 +1,10 @@
 /* --- Copyright Jonathan Meyer 1996. All rights reserved. -----------------
  > File:        jasmin/src/jasmin/Scanner.java
- > Purpose:     Tokenizer for Jasmin
+ > Purpose:     Tokenizer for jasmin.Jasmin
  > Author:      Jonathan Meyer, 10 July 1996
  */
 
-/* Scanner.java - class for tokenizing Jasmin files. This is rather
+/* Scanner.java - class for tokenizing jasmin.Jasmin files. This is rather
  * cheap and cheerful.
 */
 
@@ -351,7 +351,7 @@ class Scanner {
                 if (!only_name) {
                     token tok;
 
-                    // Jasmin keyword or directive ?
+                    // jasmin.Jasmin keyword or directive ?
                     if ((tok = ReservedWords.get(str)) != null)
                         return tok;
 

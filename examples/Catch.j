@@ -5,7 +5,7 @@
 ; -------------------------------------------------------------------------
 
 ;
-; This hows how to throw and catch Exceptions in Jasmin
+; This hows how to throw and catch Exceptions in jasmin.Jasmin
 ;
 
 .class public examples/Catch

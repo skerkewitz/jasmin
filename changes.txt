@@ -1,4 +1,4 @@
-Jasmin Revision History                                     Jonathan Meyer
+jasmin.Jasmin Revision History                                     Jonathan Meyer
 
 15 Oct 2004 - Release 1.1
 
@@ -32,14 +32,14 @@ Jasmin Revision History                                     Jonathan Meyer
 
    * Added support for Visual J++.
 
-     Added vjasmin.bat, for running Jasmin using Visual J++.
+     Added vjasmin.bat, for running jasmin.Jasmin using Visual J++.
 
-     Converted JAS/Jasmin to use its own internal RuntimeConstants, so that
+     Converted JAS/jasmin.Jasmin to use its own internal RuntimeConstants, so that
      there is no longer any dependency on Sun's version (needed by J++).
 
    * Tidied API:
 
-     Renamed "Jasmin" class "ClassFile" (sorry to those of you using the API
+     Renamed "jasmin.Jasmin" class "ClassFile" (sorry to those of you using the API
      from 1.04). The ClassFile class is documented in the doc/api directory.
 
    * Mods for Java 1.1:
@@ -50,7 +50,7 @@ Jasmin Revision History                                     Jonathan Meyer
 
    * Mods to pick up documentation in book:
     
-     "wide" is now a recognized instruction in Jasmin files - although the assembler
+     "wide" is now a recognized instruction in jasmin.Jasmin files - although the assembler
      just ignores it!
  
      Added the optional <high> parameter to tableswitch. 
@@ -65,9 +65,9 @@ Jasmin Revision History                                     Jonathan Meyer
 
    * Split several of the internal classes into smaller pieces.
 
-   * Restructured internal sources so that Jasmin, Scanner and parser
+   * Restructured internal sources so that jasmin.Jasmin, Scanner and parser
      no longer rely on static data structures. Now there is a public API
-     to Jasmin, for people that want to assemble classes using their own
+     to jasmin.Jasmin, for people that want to assemble classes using their own
      data input/output streams.
 
 30 Oct 96

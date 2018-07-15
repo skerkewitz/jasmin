@@ -1,6 +1,6 @@
 <html>
 <head>
-<title>Jasmin User Guide</title>
+<title>jasmin.Jasmin User Guide</title>
 <link href="style.css" rel="stylesheet" type="text/css">
 </head>
 <body>
@@ -17,20 +17,20 @@ Daniel Reynaud, Mart 2006
 <h1>About This Document</h1>
 
 This guide describes the rules and syntax used in JasminXT, the extension of
-the Jasmin language in version 2.0. If you are new to Jasmin, you should
-refer to the Jasmin user guide. Note that this document doesn't
+the jasmin.Jasmin language in version 2.0. If you are new to jasmin.Jasmin, you should
+refer to the jasmin.Jasmin user guide. Note that this document doesn't
 explain the Java Virtual Machine itself, or give syntax notes for
-every instruction known to Jasmin. See the Java Virtual Machine specification
+every instruction known to jasmin.Jasmin. See the Java Virtual Machine specification
 for more information on the JVM.<p>
 
 
-<h1>Why a new Jasmin language ?</h1>
+<h1>Why a new jasmin.Jasmin language ?</h1>
 
 <p>
-Jasmin is the de-facto standard Java assembly language. It is useful to explore
+jasmin.Jasmin is the de-facto standard Java assembly language. It is useful to explore
 the possibilities of bytecode, but it does not offer a real low level control
 over the produced output. Therefore it is not suitable to generate test cases
-for virtual machines or bytecode verifier. This new version of the Jasmin
+for virtual machines or bytecode verifier. This new version of the jasmin.Jasmin
 language, called JasminXT, provides optional directives and other syntax
 updates to have more control over the output and to stick with the latest
 changes of the Java language.</p>
@@ -109,9 +109,9 @@ Example : <pre>.bytecode 49.0</pre><br>
 
 <h1>JasminXT File Format</h1>
 <p>
-This new version is an extension of the existing Jasmin language, therefore old
-Jasmin files should still compile correctly with newer versions of Jasmin.
-JasminXT is supported by Jasmin 2.0 or higher. <b>Changes in Jasmin 2.4 are in bold.</b></p>
+This new version is an extension of the existing jasmin.Jasmin language, therefore old
+jasmin.Jasmin files should still compile correctly with newer versions of jasmin.Jasmin.
+JasminXT is supported by jasmin.Jasmin 2.0 or higher. <b>Changes in jasmin.Jasmin 2.4 are in bold.</b></p>
 
 <p>
 In the rest of this document, words between '[' and ']' are optional. The
@@ -152,7 +152,7 @@ example :
 
 <p>The .bytecode directive sets the version of the bytecode in the class file.</p>
 
-<p>The .signature directive, when used in the header of the Jasmin file, sets the
+<p>The .signature directive, when used in the header of the jasmin.Jasmin file, sets the
 Signature attribute for the class (the argument is a string between double
 quotes)</p>
 
@@ -278,7 +278,7 @@ The general format of a method definition has not changed in JasminXT.
 }
 </pre>
 <p>
-In Jasmin XT you can now use offsets instead of labels for the local variable
+In jasmin.Jasmin XT you can now use offsets instead of labels for the local variable
 definitions and for the exception handlers definitions.</p>
 
 <p>The .signature sets the Signature attribute for this method with the given
@@ -357,7 +357,7 @@ goto $-n  ; relative offset : go n bytes backwards
 
 <p>
 If something hasn't been documented here, it means that it hasn't changed, so
-you can still refer to the Jasmin <a href="guide.html">user guide</a></p>
+you can still refer to the jasmin.Jasmin <a href="guide.html">user guide</a></p>
 
 <p>
 <b>Added '_w' aliase to [adfli]-load/store, iinc and ret instructions (e.g. aload - aload_w).
@@ -408,7 +408,7 @@ Field format (except AnnotationDefault):
 
 <hr><address>Copyright (c) Daniel Reynaud, Mart 2006</address>
 <hr>
-<a href="http://jasmin.sourceforge.net">Jasmin Home</a>
+<a href="http://jasmin.sourceforge.net">jasmin.Jasmin Home</a>
 </td></tr></table>
 </body>
 </html>

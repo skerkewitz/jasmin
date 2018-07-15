@@ -1,11 +1,11 @@
 /* --- Copyright Jonathan Meyer 1996. All rights reserved. -----------------
  > File:        jasmin/src/jasmin/parser.cup
- > Purpose:     Parser for Jasmin
+ > Purpose:     Parser for jasmin.Jasmin
  > Author:      Jonathan Meyer, 10 July 1996
  */
 
 /*
- * parser.cup - Java CUP file containing LALR(1) grammar for Jasmin,
+ * parser.cup - Java CUP file containing LALR(1) grammar for jasmin.Jasmin,
  * along with calls to ClassFile methods to output bytecode.
  */
 
