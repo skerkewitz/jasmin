@@ -1,6 +1,6 @@
-#Jasmin User Guide
+# Jasmin User Guide
 
-#About This Document
+# About This Document
 
 This guide describes the rules and syntax used in jasmin.Jasmin, and how to run jasmin.Jasmin. Note that this document doesn't explain the Java Virtual Machine itself, or give syntax notes for every instruction known to jasmin.Jasmin. See the Java Virtual Machine specification for more information on the JVM.
 
@@ -12,7 +12,7 @@ suitable for loading by a Java runtime system.
 
 Jasmin was originally created as a companion to the book "Java Virtual Machine", written by Jon Meyer and Troy Downing and published by O'Reilly Associates. The book is now out of print. jasmin.Jasmin survives as a SourceForge Open Source project.
 
-#Jasmin Design
+# Jasmin Design
 
 Jasmin is designed as a simple assembler. It has a clean easy-to-learn syntax with few bells and whistles.  Where possible, jasmin.Jasmin adopts a one-to-one mapping between its syntax and the conventions followed by Java class files.
 For example, package names in Jasmin are delimited with the '/' character (e.g. "java/lang/String") used by the class file format, instead of the '.' character (java.lang.String) used in the Java language.</p>
@@ -25,7 +25,7 @@ substitutions, or support macros.
 On the other hand, using jasmin.Jasmin you can quickly try out nearly all of the features of the Java Virtual Machine, including
 methods, fields, subroutines, exception handlers, and so on. The jasmin.Jasmin syntax is also readable and compact.
 
-#Running jasmin.Jasmin
+# Running jasmin.Jasmin
 
 The `jasmin.jar` file is an executable JAR file that runs Jasmin.
 For example:
@@ -49,7 +49,7 @@ Finally, you can use the "-g" option to tell jasmin.Jasmin to include line numbe
 .class file. jasmin.Jasmin will number the lines in the jasmin.Jasmin source file that JVM instructions appear on. Then, if an error occurs, you can see what instruction in the jasmin.Jasmin source caused the error. Note that specifying "-g" causes any .line directives within the jasmin.Jasmin file to be ignored.
 
 
-#Statements
+# Statements
 
 Jasmin source files consists of a sequence of newline-separated statements. There are three types of statement:
 
@@ -59,7 +59,7 @@ Jasmin source files consists of a sequence of newline-separated statements. Ther
 
 Directives and instructions can take *parameters*. These parameters are placed on the same line as the directive or instruction, separated by spaces.
 
-###Directives
+### Directives
 
 Directive statements are used to give jasmin.Jasmin meta-level information. Directive statements consist of a directive name, and then zero or more parameters separated by spaces, then a newline.
 
@@ -77,7 +77,7 @@ Some example directive statements are:
 
 The parameters used by each directive are described in more detail later in the document.
 
-###Instructions
+### Instructions
 
 An instruction statement consists of an instruction name, zero or more parameters separated by spaces, and a newline.
 
@@ -92,9 +92,9 @@ Here are some examples of instruction statements:
 See [Jasmin Instructions](instructions.md) for more details on the syntax of instructions in Jasmin.
 
 
-###Labels
+### Labels
 
-A jasmin.Jasmin label statement consists of a name followed by a ':', and a newline. For example:
+A Jasmin label statement consists of a name followed by a ':', and a newline. For example:
 
     Foo:
 
@@ -107,7 +107,7 @@ For example, you could use the label: `#_1:`
 
 Labels can only be used within method definitions. The names are local to that method.
 
-#The Jasmin Tokenizer
+# The Jasmin Tokenizer
 
 Jasmin tokenizes its input stream, splitting the stream into tokens by looking for whitespace characters (spaces, tabs and newlines). The tokenizer looks for:
 
@@ -122,7 +122,7 @@ Jasmin tokenizes its input stream, splitting the stream into tokens by looking f
 
 The rules used by the tokenizer are described below:
 
-###Comments
+### Comments
 
 A comment is a token that starts with a ';' character, and terminates with the newline character at the end of the line.
 
@@ -140,7 +140,7 @@ is the token `Ljava/lang/String;`, whereas
 
 is the token "foo" followed by a comment "baz ding".
 
-###Numbers and Strings
+### Numbers and Strings
 
 In Jasmin, only simple decimal and integer numeric formats are recognized. Floats in scientific or exponent format are
 not yet supported. Character codes and octal aren't currently supported either. This means you can have:
@@ -154,15 +154,15 @@ but not
 Quoted strings are also very basic. The full range of backslash escape sequences are not supported yet, although "\n" and "\t"
 are.
 
-###Class Names
+### Class Names
 
 Class names in Jasmin should be written using the Java class file format conventions, so `java.lang.String` becomes `java/lang/String`.
  
-###Type Descriptors
+### Type Descriptors
 
 Type information is also written as they appear in class files (e.g. the descriptor `I` specifies an integer, `[Ljava/lang/Thread;` is an array of Threads, etc.).
 
-###Methods
+### Methods
 
 Method names are specified using a single token, e.g.
 
@@ -187,7 +187,7 @@ using:
 
     invokevirtual mypackage/MyClass/foo(Ljava/lang/Object;[I)I
 
-###Fields
+### Fields
 
 Field names are specified in jasmin.Jasmin using two tokens, one giving the name and class of the field, the other giving its descriptor. For example:
 
@@ -195,7 +195,7 @@ Field names are specified in jasmin.Jasmin using two tokens, one giving the name
 
 gets the value of the field called `my_font` in the class `mypackage.MyClass`. The type of the field is `Ljava/lang/Font;` (i.e. a Font object).
 
-#FILES
+# Files
 
 Jasmin files start by giving information on the class being defined in the file - such as the name of the class, the name of the source file that the class originated from, the name of the superclass, etc.
 
@@ -211,14 +211,14 @@ For example, the file defining MyClass might start with the directives:
     .class  public MyClass
     .super  java/lang/Object
 
-###.source directive
+### .source directive
 
 The .source directive is optional. It specifies the value of the "SourceFile" attribute for the class file. (This is used by Java to print out debugging info if something goes wrong in one of the methods in the class). If you generated the jasmin.Jasmin file automatically (e.g. as the result of compiling a file written in another syntax) you should use the .source directive to tell Java the name of the originating file. Note that the source file name should not include any pathname. Use "foo.src" but not "/home/user/foo.src".
 
 If no .source directive is given, the name of the Jasmin file you are compiling is used instead as the SourceFile attribute
 instead.
 
-###.class and .super directives
+### .class and .super directives
 
 The `.class` and `.super` directive tell the JVM the name of this class and its superclass. These directives take parameters as follows: 
 
@@ -229,14 +229,14 @@ Parameter|Description
 keywords: `public, final, super, interface, abstract`
 
 
-###.interface directive
+### .interface directive
 
 Note that, instead of using the directive .class, you can alternatively use the directive .interface. This has
 the same syntax as the .class directive, but indicates that the Jasmin file is defining a Java interface. e.g.
 
     .interface public foo
 
-###.implements
+### .implements
 
 After `.source`, `.class` and `.super`, you can list the interfaces that are implemented by the class you are defining, using 
 the .implements directive. The syntax of .implements is:
@@ -251,7 +251,7 @@ For example:
     .implements Edible
     .implements java/lang/Throwable
 
-#Field Definitions
+# Field Definitions
 
 After the header information, the next section of the Jasmin file is a list of field definitions.
 
@@ -284,7 +284,7 @@ becomes
 
     .field public static final PI F = 3.14
 
-#Method Definitions
+# Method Definitions
 
 After listing the fields of the class, the rest of the jasmin.Jasmin file lists methods defined by the class.
 
@@ -310,7 +310,7 @@ the most basic Jasmin method is something like:
       return     ; must give a return statement
     .end method
 
-###Method Directives
+### Method Directives
 
 The following directives can be used only within method definitions:
 
@@ -367,7 +367,7 @@ The entry indicates that when an exception which is an instance of `<classname>`
 If classname is the keyword "all", then exceptions of any class are caught by the handler.
 
 
-###Abstract Methods
+### Abstract Methods
 
 To declare an abstract method, write a method with no body. e.g.
 
@@ -380,7 +380,7 @@ note that abstract methods can have `.throws` directives, e.g.
         .throws java/io/IOException
     .end method
 
-#Instructions
+# Instructions
 
 JVM instructions are placed between the `.method` and `.end method` directives. VM instructions can take zero or more parameters, depending on the type of instruction used. Some example
 instructions are shown below:

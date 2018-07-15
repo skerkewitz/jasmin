@@ -8,7 +8,7 @@ This document shows the syntax and the types of parameters required by each Java
 
 See The Jasmin User Guide for a description of other aspects of the Jasmin syntax.
 
-#Local variable instructions
+# Local variable instructions
 
 The following instructions use local variables:<p>
 
@@ -29,7 +29,7 @@ for example:
     aload 1    ; push local variable 1 onto the stack
     ret 2      ; return to the address held in local variable 2
 
-#The bipush, sipush and iinc instructions
+# The bipush, sipush and iinc instructions
 
 The bipush and sipush instructions take an integer as a parameter:
 
@@ -79,7 +79,7 @@ For example:
       goto Label1    ; jump to the code at Label1
                       ; (an infinite loop!)
 
-#Class and object operations
+# Class and object operations
 
 The following instructions take a class name as a parameter:
 
@@ -92,7 +92,7 @@ For example:
 
     new java/lang/String   ; create a new String object
 
-#Method invocation
+# Method invocation
 
 The following instructions are used to invoke methods:<p>
 
@@ -123,7 +123,7 @@ for example:
 
      invokeinterface foo/Baz/myMethod(I)V 1
 
-#Field manipulation instructions
+# Field manipulation instructions
 
 The four instructions getfield, getstatic, putfield and putstatic have the form:
 
@@ -174,7 +174,7 @@ for example:
 
      multianewarray [[[I 2
 
-#The ldc and ldc_w instructions
+# The ldc and ldc_w instructions
 
 The ldc and ldc_w instructions are followed by a constant:
 
@@ -188,7 +188,7 @@ The ldc and ldc_w instructions are followed by a constant:
      ldc "Hello World"    ; push a String
      ldc_w 3.141592654    ; push PI as a double
 
-#The lookupswitch instruction
+# The lookupswitch instruction
 
 The `lookupswitch` instruction has the syntax:
 
@@ -219,7 +219,7 @@ For example:
     DefaultLabel:
        ... got something else
 
-#The tableswitch instruction
+# The tableswitch instruction
 
 The `tableswitch` instruction has the syntax:
 
@@ -251,7 +251,7 @@ For example:
      ... got something else
 
 
-#No parameter
+# No parameter
 
 The following instructions (the majority) take no parameters:
 
