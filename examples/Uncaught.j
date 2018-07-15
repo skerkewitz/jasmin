@@ -1,4 +1,4 @@
-; --- Copyright Jonathan Meyer 1996. All rights reserved. -----------------
+  ; --- Copyright Jonathan Meyer 1996. All rights reserved. -----------------
 ; File:      jasmin/examples/Uncaught.j
 ; Author:    Jonathan Meyer, 10 July 1996
 ; Purpose:   Throws an exception - doesn't catch it
