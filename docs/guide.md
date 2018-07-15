@@ -1,10 +1,10 @@
 # Jasmin User Guide
 
-# About This Document
+## About This Document
 
 This guide describes the rules and syntax used in Jasmin, and how to run Jasmin. Note that this document doesn't explain the Java Virtual Machine itself, or give syntax notes for every instruction known to Jasmin. See the Java Virtual Machine specification for more information on the JVM.
 
-# What is Jasmin?
+## What is Jasmin?
 
 Jasmin is an assembler for the Java Virtual Machine. It takes ASCII descriptions of Java classes, written in a simple 
 assembler-like syntax using the Java Virtual Machine instruction set. It converts them into binary Java class files, 
@@ -12,7 +12,7 @@ suitable for loading by a Java runtime system.
 
 Jasmin was originally created as a companion to the book "Java Virtual Machine", written by Jon Meyer and Troy Downing and published by O'Reilly Associates. The book is now out of print. Jasmin survives as a SourceForge Open Source project.
 
-# Jasmin Design
+## Jasmin Design
 
 Jasmin is designed as a simple assembler. It has a clean easy-to-learn syntax with few bells and whistles.  Where possible, Jasmin adopts a one-to-one mapping between its syntax and the conventions followed by Java class files.
 For example, package names in Jasmin are delimited with the '/' character (e.g. "java/lang/String") used by the class file format, instead of the '.' character (java.lang.String) used in the Java language.</p>
@@ -25,7 +25,7 @@ substitutions, or support macros.
 On the other hand, using Jasmin you can quickly try out nearly all of the features of the Java Virtual Machine, including
 methods, fields, subroutines, exception handlers, and so on. The Jasmin syntax is also readable and compact.
 
-# Running Jasmin
+## Running Jasmin
 
 The `jasmin.jar` file is an executable JAR file that runs Jasmin.
 For example:
@@ -49,7 +49,7 @@ Finally, you can use the "-g" option to tell Jasmin to include line number infor
 .class file. Jasmin will number the lines in the Jasmin source file that JVM instructions appear on. Then, if an error occurs, you can see what instruction in the Jasmin source caused the error. Note that specifying "-g" causes any .line directives within the Jasmin file to be ignored.
 
 
-# Statements
+## Statements
 
 Jasmin source files consists of a sequence of newline-separated statements. There are three types of statement:
 
@@ -107,7 +107,7 @@ For example, you could use the label: `#_1:`
 
 Labels can only be used within method definitions. The names are local to that method.
 
-# The Jasmin Tokenizer
+## The Jasmin Tokenizer
 
 Jasmin tokenizes its input stream, splitting the stream into tokens by looking for whitespace characters (spaces, tabs and newlines). The tokenizer looks for:
 
@@ -195,7 +195,7 @@ Field names are specified in Jasmin using two tokens, one giving the name and cl
 
 gets the value of the field called `my_font` in the class `mypackage.MyClass`. The type of the field is `Ljava/lang/Font;` (i.e. a Font object).
 
-# Files
+## Files
 
 Jasmin files start by giving information on the class being defined in the file - such as the name of the class, the name of the source file that the class originated from, the name of the superclass, etc.
 
@@ -251,7 +251,7 @@ For example:
     .implements Edible
     .implements java/lang/Throwable
 
-# Field Definitions
+## Field Definitions
 
 After the header information, the next section of the Jasmin file is a list of field definitions.
 
@@ -284,7 +284,7 @@ becomes
 
     .field public static final PI F = 3.14
 
-# Method Definitions
+## Method Definitions
 
 After listing the fields of the class, the rest of the Jasmin file lists methods defined by the class.
 
@@ -380,7 +380,7 @@ note that abstract methods can have `.throws` directives, e.g.
         .throws java/io/IOException
     .end method
 
-# Instructions
+## Instructions
 
 JVM instructions are placed between the `.method` and `.end method` directives. VM instructions can take zero or more parameters, depending on the type of instruction used. Some example
 instructions are shown below:
