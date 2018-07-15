@@ -25,7 +25,7 @@ class num_token extends java_cup.runtime.token {
   /** Constructor with default value of 0 */
   public num_token(int term_num)
     {
-      this(term_num, new Integer(0));
+      this(term_num, 0);
     }
 
   /** The stored number reference. */

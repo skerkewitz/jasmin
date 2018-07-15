@@ -155,10 +155,10 @@ public class CodeAttr
         Insn now = (Insn)(en.nextElement());
         if (now instanceof Label)
           {
-            insn_pc.put(((Label)now).id, new Integer(code_size));
+            insn_pc.put(((Label)now).id, code_size);
           }
         else
-          { insn_pc.put(now, new Integer(code_size)); }
+          { insn_pc.put(now, code_size); }
         code_size += now.size(e, this);
       }
     int total_size = code_size;

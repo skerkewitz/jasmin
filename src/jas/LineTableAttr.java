@@ -35,7 +35,7 @@ public class LineTableAttr
   public void addEntry(Label l, int line)
   {
     pc.addElement(l);
-    this.line.addElement(new Integer(line));
+    this.line.addElement(line);
   }
 
   void resolve(ClassEnv e)

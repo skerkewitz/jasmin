@@ -1853,7 +1853,7 @@ class CUP$actions {
           case 112: // item ::= Int 
             {
               CUP$result = new var_token(/*item*/7);
-               ((var_token)CUP$result).var_val = new Integer((/*i*/(int_token)CUP$stack.elementAt(CUP$top-0)).int_val); 
+               ((var_token)CUP$result).var_val = (/*i*/(int_token)CUP$stack.elementAt(CUP$top-0)).int_val;
             }
           return CUP$result;
 

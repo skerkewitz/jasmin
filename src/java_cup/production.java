@@ -118,7 +118,7 @@ public class production {
       _index = next_index++;
 
       /* put us in the global collection of productions */
-      _all.put(new Integer(_index),this);
+      _all.put(_index,this);
 
       /* put us in the production list of the lhs non terminal */
       lhs_sym.add_production(this);
@@ -456,14 +456,14 @@ public class production {
 	      /* if it has a label enter it in the tables */
 	      if (part.label() != null)
 		{
-		  label_map.put(part.label(), new Integer(pos));
+		  label_map.put(part.label(), pos);
 		  label_types.put(part.label(), part.the_symbol().stack_type());
 		}
 	    }
 	}
 
       /* add a label for the LHS */
-      label_map.put("RESULT", new Integer(-1));
+      label_map.put("RESULT", -1);
       label_types.put("RESULT", lhs_type);
 
       /* now walk across and do each action string */

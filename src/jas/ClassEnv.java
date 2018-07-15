@@ -128,7 +128,7 @@ public class ClassEnv implements RuntimeConstants
     for (Enumeration e = cpe.elements(); e.hasMoreElements();)
       {
         CP tmp = (CP)(e.nextElement());
-        cpe_index.put(tmp.getUniq(), new Integer(curidx));
+        cpe_index.put(tmp.getUniq(), curidx);
         curidx++;
         if ((tmp instanceof LongCP) ||
             (tmp instanceof DoubleCP))

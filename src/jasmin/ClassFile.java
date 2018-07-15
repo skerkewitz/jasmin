@@ -753,13 +753,13 @@ public class ClassFile {
 
     void addLookupswitch(int val, String label)
             throws jasError {
-        switch_vec.addElement(new Integer(val));
+        switch_vec.addElement(val);
         switch_vec.addElement(new LabelOrOffset(getLabel(label)));
     };
 
     void addLookupswitch(int val, int offset)
             throws jasError {
-        switch_vec.addElement(new Integer(val));
+        switch_vec.addElement(val);
         switch_vec.addElement(new LabelOrOffset(offset));
     };
 

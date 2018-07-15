@@ -17,9 +17,9 @@ abstract class ScannerUtils {
     {
         long x = Long.parseLong(str, radix);
         if (x <= (long)Integer.MAX_VALUE && x >= (long)Integer.MIN_VALUE) {
-            return new Integer((int)x);
+            return (int) x;
         }
-        return new Long(x);
+        return x;
     }
 
     //
@@ -29,15 +29,13 @@ abstract class ScannerUtils {
     public static Number convertNumber(String str)
                 throws NumberFormatException
     {
-        if(str.startsWith("+")) {
-            return new Integer(str.substring(1,str.length()));
-        }
+        if(str.startsWith("+")) return Integer.valueOf(str.substring(1, str.length()));
         if (str.startsWith("0x")) {
             // base 16 integer
             return (convertInt(str.substring(2), 16));
         } else if (str.indexOf('.') != -1) {
             // make a double
-            Double dc = new Double(str);
+            Double dc = Double.valueOf(str);
             // if number have suffix 'd' force double value
             // thanks to JD Brennan
             if(!str.endsWith("d")) {
@@ -46,7 +44,7 @@ abstract class ScannerUtils {
                 // see if it will fit into a float...
                 if (x <= (double)Float.MAX_VALUE && x >= (float)Float.MIN_VALUE) {
                     // bug fix here thanks to Peter Chubb (replaced int->float)
-                    return new Float((float)x);
+                    return (float) x;
                 }
                 // if not, return a double
             }

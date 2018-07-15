@@ -110,25 +110,25 @@ public class lexer {
   public static void init() throws java.io.IOException
     {
       /* set up the keyword table */
-      keywords.put("package",  new Integer(sym.PACKAGE));
-      keywords.put("import",   new Integer(sym.IMPORT));
-      keywords.put("code",     new Integer(sym.CODE));
-      keywords.put("action",   new Integer(sym.ACTION));
-      keywords.put("parser",   new Integer(sym.PARSER));
-      keywords.put("terminal", new Integer(sym.TERMINAL));
-      keywords.put("non",      new Integer(sym.NON));
-      keywords.put("init",     new Integer(sym.INIT));
-      keywords.put("scan",     new Integer(sym.SCAN));
-      keywords.put("with",     new Integer(sym.WITH));
-      keywords.put("start",    new Integer(sym.START));
-      keywords.put("debug",    new Integer(sym.DEBUG));
+      keywords.put("package",  sym.PACKAGE);
+      keywords.put("import",   sym.IMPORT);
+      keywords.put("code",     sym.CODE);
+      keywords.put("action",   sym.ACTION);
+      keywords.put("parser",   sym.PARSER);
+      keywords.put("terminal", sym.TERMINAL);
+      keywords.put("non",      sym.NON);
+      keywords.put("init",     sym.INIT);
+      keywords.put("scan",     sym.SCAN);
+      keywords.put("with",     sym.WITH);
+      keywords.put("start",    sym.START);
+      keywords.put("debug",    sym.DEBUG);
 
       /* set up the table of single character symbols */
-      char_symbols.put(new Integer(';'), new Integer(sym.SEMI));
-      char_symbols.put(new Integer(','), new Integer(sym.COMMA));
-      char_symbols.put(new Integer('*'), new Integer(sym.STAR));
-      char_symbols.put(new Integer('.'), new Integer(sym.DOT));
-      char_symbols.put(new Integer('|'), new Integer(sym.BAR));
+      char_symbols.put(';', sym.SEMI);
+      char_symbols.put(',', sym.COMMA);
+      char_symbols.put('*', sym.STAR);
+      char_symbols.put('.', sym.DOT);
+      char_symbols.put('|', sym.BAR);
 
       /* read two characters of lookahead */
       next_char = System.in.read();
@@ -223,7 +223,7 @@ public class lexer {
     {
       Integer result;
 
-      result = (Integer)char_symbols.get(new Integer((char)ch));
+      result = (Integer)char_symbols.get((int) (char) ch);
       if (result == null) 
 	return -1;
       else
@@ -312,7 +312,7 @@ public class lexer {
 	    }
 
 	  /* otherwise record the char and move on */
-	  result.append(new Character((char)next_char));
+	  result.append(Character.valueOf((char)next_char));
 	  advance();
 	}
 
@@ -460,8 +460,8 @@ public class lexer {
 	  if (next_char == EOF_CHAR) return new token(sym.EOF);
 
 	  /* if we get here, we have an unrecognized character */
-	  emit_warn("Unrecognized character '" + 
-	    new Character((char)next_char) + "'(" + next_char + 
+	  emit_warn("Unrecognized character '" +
+              (char) next_char + "'(" + next_char +
 	    ") -- ignored");
 
 	  /* advance past it */
