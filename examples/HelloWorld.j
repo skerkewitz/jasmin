@@ -5,7 +5,7 @@
 ; -------------------------------------------------------------------------
 
 
-.class public NoJad.j
+.class public examples.HelloWorld
 .super java/lang/Object
 
 ;
@@ -18,18 +18,13 @@
 .end method
 
 .method public static main([Ljava/lang/String;)V
-   .limit stack 2
-   .limit locals 2
-   
-   bipush 2
-   astore 0
-   bipush 3
-   astore 1
+  .limit stack 2
+  .limit locals 2
 
-   aload 0
-   aload 1
-   astore 0
-   astore 1
 
-   return
+  getstatic      java/lang/System/out Ljava/io/PrintStream;
+  ldc            "Hello World."
+  invokevirtual  java/io/PrintStream/println(Ljava/lang/String;)V
+
+  return
 .end method
