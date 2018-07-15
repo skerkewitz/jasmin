@@ -2,7 +2,7 @@
 
 # About This Document
 
-This guide describes the rules and syntax used in jasmin.Jasmin, and how to run jasmin.Jasmin. Note that this document doesn't explain the Java Virtual Machine itself, or give syntax notes for every instruction known to jasmin.Jasmin. See the Java Virtual Machine specification for more information on the JVM.
+This guide describes the rules and syntax used in Jasmin, and how to run Jasmin. Note that this document doesn't explain the Java Virtual Machine itself, or give syntax notes for every instruction known to Jasmin. See the Java Virtual Machine specification for more information on the JVM.
 
 # What is Jasmin?
 
@@ -10,22 +10,22 @@ Jasmin is an assembler for the Java Virtual Machine. It takes ASCII descriptions
 assembler-like syntax using the Java Virtual Machine instruction set. It converts them into binary Java class files, 
 suitable for loading by a Java runtime system.
 
-Jasmin was originally created as a companion to the book "Java Virtual Machine", written by Jon Meyer and Troy Downing and published by O'Reilly Associates. The book is now out of print. jasmin.Jasmin survives as a SourceForge Open Source project.
+Jasmin was originally created as a companion to the book "Java Virtual Machine", written by Jon Meyer and Troy Downing and published by O'Reilly Associates. The book is now out of print. Jasmin survives as a SourceForge Open Source project.
 
 # Jasmin Design
 
-Jasmin is designed as a simple assembler. It has a clean easy-to-learn syntax with few bells and whistles.  Where possible, jasmin.Jasmin adopts a one-to-one mapping between its syntax and the conventions followed by Java class files.
+Jasmin is designed as a simple assembler. It has a clean easy-to-learn syntax with few bells and whistles.  Where possible, Jasmin adopts a one-to-one mapping between its syntax and the conventions followed by Java class files.
 For example, package names in Jasmin are delimited with the '/' character (e.g. "java/lang/String") used by the class file format, instead of the '.' character (java.lang.String) used in the Java language.</p>
 
 The Jasmin assembler does little compile-time processing or checking of the input code. For example, it doesn't check that
-classes you reference actually exist, or that your type descriptors are well formed. jasmin.Jasmin also lacks many of the feautures
+classes you reference actually exist, or that your type descriptors are well formed. Jasmin also lacks many of the feautures
 found in full macro assemblers. For example, it doesn't inline mathematical expressions, perform variable
 substitutions, or support macros.
 
-On the other hand, using jasmin.Jasmin you can quickly try out nearly all of the features of the Java Virtual Machine, including
-methods, fields, subroutines, exception handlers, and so on. The jasmin.Jasmin syntax is also readable and compact.
+On the other hand, using Jasmin you can quickly try out nearly all of the features of the Java Virtual Machine, including
+methods, fields, subroutines, exception handlers, and so on. The Jasmin syntax is also readable and compact.
 
-# Running jasmin.Jasmin
+# Running Jasmin
 
 The `jasmin.jar` file is an executable JAR file that runs Jasmin.
 For example:
@@ -45,8 +45,8 @@ You can use the "-d" option to tell jasmin to place the output in an alternative
 
 will place the output in `/tmp/mypackage/MyClass.class`.
 
-Finally, you can use the "-g" option to tell jasmin.Jasmin to include line number information (used by debuggers) in the resulting
-.class file. jasmin.Jasmin will number the lines in the jasmin.Jasmin source file that JVM instructions appear on. Then, if an error occurs, you can see what instruction in the jasmin.Jasmin source caused the error. Note that specifying "-g" causes any .line directives within the jasmin.Jasmin file to be ignored.
+Finally, you can use the "-g" option to tell Jasmin to include line number information (used by debuggers) in the resulting
+.class file. Jasmin will number the lines in the Jasmin source file that JVM instructions appear on. Then, if an error occurs, you can see what instruction in the Jasmin source caused the error. Note that specifying "-g" causes any .line directives within the Jasmin file to be ignored.
 
 
 # Statements
@@ -61,9 +61,9 @@ Directives and instructions can take *parameters*. These parameters are placed o
 
 ### Directives
 
-Directive statements are used to give jasmin.Jasmin meta-level information. Directive statements consist of a directive name, and then zero or more parameters separated by spaces, then a newline.
+Directive statements are used to give Jasmin meta-level information. Directive statements consist of a directive name, and then zero or more parameters separated by spaces, then a newline.
 
-All directive names start with a "." character. The directives in jasmin.Jasmin are:
+All directive names start with a "." character. The directives in Jasmin are:
 
     .catch .class .end .field .implements .interface .limit .line .method .source .super .throws .var
 
@@ -189,7 +189,7 @@ using:
 
 ### Fields
 
-Field names are specified in jasmin.Jasmin using two tokens, one giving the name and class of the field, the other giving its descriptor. For example:
+Field names are specified in Jasmin using two tokens, one giving the name and class of the field, the other giving its descriptor. For example:
 
     getstatic mypackage/MyClass/my_font   Ljava/lang/Font;
 
@@ -213,7 +213,7 @@ For example, the file defining MyClass might start with the directives:
 
 ### .source directive
 
-The .source directive is optional. It specifies the value of the "SourceFile" attribute for the class file. (This is used by Java to print out debugging info if something goes wrong in one of the methods in the class). If you generated the jasmin.Jasmin file automatically (e.g. as the result of compiling a file written in another syntax) you should use the .source directive to tell Java the name of the originating file. Note that the source file name should not include any pathname. Use "foo.src" but not "/home/user/foo.src".
+The .source directive is optional. It specifies the value of the "SourceFile" attribute for the class file. (This is used by Java to print out debugging info if something goes wrong in one of the methods in the class). If you generated the Jasmin file automatically (e.g. as the result of compiling a file written in another syntax) you should use the .source directive to tell Java the name of the originating file. Note that the source file name should not include any pathname. Use "foo.src" but not "/home/user/foo.src".
 
 If no .source directive is given, the name of the Jasmin file you are compiling is used instead as the SourceFile attribute
 instead.
@@ -286,7 +286,7 @@ becomes
 
 # Method Definitions
 
-After listing the fields of the class, the rest of the jasmin.Jasmin file lists methods defined by the class.
+After listing the fields of the class, the rest of the Jasmin file lists methods defined by the class.
 
 A method is defined using the basic form:
 
@@ -318,7 +318,7 @@ Directive|Description
 --------------|------------
 `.limit stack <integer>`|Sets the maximum size of the operand stack required by the method.
 `.limit locals <integer>`|Sets the number of local variables required by the method.
-`.line <integer>`|This is used to tag the subsequent instruction(s) with a line number. Debuggers use this information, together with the name of the source file (see .source above) to show at what line in a method things went wrong. If you are generating jasmin.Jasmin files by compiling a source file, this directive lets you indicate what line  numbers in the source file produced corrosponding Jasmin instructions. For example:
+`.line <integer>`|This is used to tag the subsequent instruction(s) with a line number. Debuggers use this information, together with the name of the source file (see .source above) to show at what line in a method things went wrong. If you are generating Jasmin files by compiling a source file, this directive lets you indicate what line  numbers in the source file produced corrosponding Jasmin instructions. For example:
 `.var <var-number> is <name> <descriptor> from <label1> to <label2>`|The .var directive is used to define the name, type descriptor and scope of a local variable number. This information is used by debuggers so that they can be more helpful when printing out the values of local variables (rather than printing just a local variable number, the debugger can actually print out the name of the variable). For example:
 `.throws <classname>`|Indicates that this method can throw exceptions of the type indicated by `<classname>`.
 `.catch <classname> from <label1> to <label2> using <label3>`|Appends an entry to the end of the exceptions table for the method.
