@@ -11,14 +11,16 @@
 ;
 ; standard initializer
 .method public <init>()V
-   aload_0                                                            ; put this on the stack
-   invokenonvirtual java/lang/Object/<init>()V                        ; invoke constructor of super class
+   aload_0
+ 
+   invokenonvirtual java/lang/Object/<init>()V
    return
 .end method
 
 .method public static main([Ljava/lang/String;)V
   .limit stack 2
   .limit locals 2
+
 
   getstatic      java/lang/System/out Ljava/io/PrintStream;
   ldc            "Hello World."

@@ -214,7 +214,7 @@ WS : [ \t\r\n]+ -> skip ; // skip spaces, tabs, newlines
 //SEP: '\n';
 
 compilation_unit
-  : jasmin_header methods EOF
+  : jasmin_header method_spec+ EOF
 //  : jasmin_header inners? fields? methods EOF
   ;
 
@@ -249,7 +249,7 @@ deprecated_expr
 
 // ---- Bytecode version specification
 bytecode_spec
-  : DBYTECODE n=Num //SEP
+  : DBYTECODE n=Float //SEP
 //  {: classFile.setVersion(n.num_val); :}
   ;
 
@@ -473,7 +473,7 @@ field_ext_expr
 // an item is an integer, a float/double/long, or a quoted string
 item
   : i=Int //{: RESULT.var_val = new Integer(i.int_val); :}
-  | n=Num //{: RESULT.var_val = n.num_val; :}
+  | n=Float //{: RESULT.var_val = n.num_val; :}
   | s=Str //{: RESULT.var_val = s.str_val; :}
   ;
 
@@ -515,41 +515,18 @@ inner_outer
 //  {: RESULT.str_val = null; :}
   ;
 
-// ---- Methods
-methods: method_spec+;
-method_spec: defmethod statements? endmethod;
-
-defmethod
-  : DMETHOD i=access name=Word //SEP
-//  {: String split[] = ScannerUtils.splitMethodSignature(name.str_val); classFile.newMethod(split[0], split[1], i.int_val); :}
-  ;
-
-endmethod
-  : DEND METHOD //SEP
-//  {: classFile.endMethod(); :}
-  ;
-
-
-// ---- Statements in a method
-statements
-  : statement+
-  ;
+// --- Methods ---
+method_spec: DMETHOD i=access name=Word statement* DEND METHOD;
 
 statement
-  : instruction //SEP
-  | directive //SEP
-//  | error
-  | label //SEP
-//  {: classFile.setLine(scanner.token_line_num); :}
+  : instruction     #InstructionStatement
+  | directive       #DirectiveStatement
+  | label           #LabelStatement
   ;
 
-
-// label:
 label
   : l=Word COLON
-//  {: classFile.plantLabel(label.str_val); :}
   | l=Int COLON instruction
-//  {: classFile.plantLabel(String.valueOf(label.int_val)); :}
   ;
 
 // Directives (.catch, .set, .limit, etc.)
@@ -686,24 +663,15 @@ instruction
 // Various patterns of instruction:
 //      instruction [<pattern>]
 simple_instruction
-  : i=Insn
-//  {: classFile.plant(i.str_val); :}
-  | i=Insn n1=Int n2=Int
-//  {: classFile.plant(i.str_val, n1.int_val, n2.int_val); :}
-  | i=Insn n=Int
-//  {: classFile.plant(i.str_val, n.int_val); :}
-  | i=Insn n=Num
-//  {: classFile.plant(i.str_val, n.num_val); :}
-  | i=Insn n=Word
-//  {: classFile.plant(i.str_val, n.str_val); :}
-  | i=Insn n=Word n2=Int
-//  {: classFile.plant(i.str_val, n.str_val, n2.int_val); :}
-  | i=Insn n1=Word n2=Word
-//  {: classFile.plant(i.str_val, n1.str_val, n2.str_val); :}
-  | i=Insn n=Str
-//  {: classFile.plantString(i.str_val, n.str_val); :}
-  | i=Insn n=Relative
-//  {: classFile.plantRelativeGoto(i.str_val, n.int_val); :}
+  : i=Insn                  #Opcode
+  | i=Insn n=Int            #OpcodeInt
+  | i=Insn n1=Int n2=Int    #OpcodeIntInt
+  | i=Insn n=Float          #OpcodeFloat
+  | i=Insn n=Word           #OpcodeWord
+  | i=Insn n=Word n2=Int    #OpcodeWordInt
+  | i=Insn n1=Word n2=Word  #OpcodeWordWord
+  | i=Insn n=Str            #OpcodeString
+  | i=Insn n=Relative       #OpcodeRelative  // jump +5
   ;
 
 // complex (i.e. multiline) instructions
@@ -780,99 +748,26 @@ table_default
 //  {: classFile.endTableswitch(off.int_val); :}
   ;
 
-
-
-
-  /* Terminals (tokens returned by the scanner). */
-//  terminal token
-//      // Directives (words beginning with a '.')
-//      DCATCH, DCLASS, DEND, DFIELD, DLIMIT, DLINE, DMETHOD, DSET, DSUPER,
-//      DSOURCE, DTHROWS, DVAR, DIMPLEMENTS, DINTERFACE, DBYTECODE, DDEBUG,
-//      DENCLOSING, DSIGNATURE, DSTACK, DATTRIBUTE, DDEPRECATED, DINNER,
-//      DANNOTATION,
-//
-//      // keywords for directives
-//      USING, IS, FROM, METHOD, SIGNATURE, STACK, OFFSET, LOCALS, FIELD, CLASS,
-//      TO, INNER, OUTER, VISIBLE, INVISIBLE, VISIBLEPARAM, INVISIBLEPARAM, USE,
-//
-//      // access types
-//      ABSTRACT, FINAL, INTERFACE, NATIVE, PRIVATE, PROTECTED, PUBLIC, STATIC,
-//      SYNCHRONIZED, TRANSIENT, VOLATILE,
-//      // added these for java 1.5 compliance :
-//      ANNOTATION, ENUM, BRIDGE, VARARGS, STRICT, SYNTHETIC,
-//
-//      // complex instructions
-//      LOOKUPSWITCH, TABLESWITCH, DEFAULT,
-//
-//      // special symbols
-//      EQ, SEP, COLON
-//   ;
-//
-//  terminal str_token Str, Word, Insn;
-//  terminal int_token Int;
-//  terminal num_token Num;
-//  terminal relative_num_token Relative;
-//
-//  non terminal str_token classname, inner_name, inner_inner, inner_outer, optional_signature;
-//  non terminal var_token optional_default, item, any_item;
-//
-//  /* Non terminals */
-//  non terminal symbol
-//         access_item, access_items, access_list, catch_expr, class_spec,
-//         complex_instruction, defmethod, directive, endmethod, field_list,
-//         field_spec, fields, instruction, implements, implements_list, implements_spec,
-//         jas_file, label, limit_expr, lookup,
-//         lookup_args, lookup_default, lookup_entry, lookup_list, method_list,
-//         method_spec, methods, set_expr, simple_instruction, source_spec,
-//         statement, statements, stmnt, super_spec, table, table_args, line_expr,
-//         table_default, table_entry, table_list, throws_expr, var_expr, bytecode_spec,
-//         debug_extension, enclosing_spec, signature_spec, signature_expr, jasmin_header,
-//         debug_list, debug_spec, deprecated_spec, deprecated_expr,
-//         generic_attributes, generic_list, generic_spec, generic_expr,
-//         field_start, endfield, field_exts, field_ext_list, field_ext_expr,
-//         inners, inner_list, inner_spec,
-//
-//     // used for Annotation attributes :
-//         annotations, ann_cls_list, ann_cls_spec, endannotation, ann_cls_expr,
-//         ann_clf_expr, ann_met_expr, ann_arglist, ann_arg_list, ann_arg_spec,
-//         ann_def_spec, ann_def_val, ann_value_items, ann_value, ann_def_expr,
-//         ann_arg_expr, ann_nest, endannotationsep, ann_ann_value, ann_ann_list,
-//         ann_value_list,
-//
-//     // used for StackMap attributes :
-//         defstack, stack_map_frame_desc, endstack, stack_offset_def, stack_items,
-//         stack_item, stack_item_expr, stackmap, defstack_same, defstack_same_expr
-//
-//  ;
-//
-//  non terminal int_token access;
-//
-
-
 /// Name
-Word: ID_START ID_CONTINUE*;
-Str: ID_START ID_CONTINUE*;
+Word: ID_START ID_CONTINUE*;      // Identifer
+Str: '"' (~'"')* '"';             // String in "double quotes"
 Relative: ID_START ID_CONTINUE*;
 
-Int
+Int                               // Int value
   : NON_ZERO_DIGIT DIGIT*
   | '0'+
   ;
 
-Num
+Float                             // float value
   : Int FRACTION
   ;
-
-
 
 fragment NON_ZERO_DIGIT: [1-9];
 fragment DIGIT: [0-9];
 fragment FRACTION: '.' DIGIT+;
 
-/// id_start     ::=  <all characters in general categories Lu, Ll, Lt, Lm, Lo, Nl, the underscore, and characters with the Other_ID_Start property>
 fragment ID_START
     : '_'
-    | '"'
     | '-'
     | '<'
     | '['

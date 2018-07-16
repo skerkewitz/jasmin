@@ -772,18 +772,6 @@ public class JasminBaseListener implements JasminListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterMethods(JasminParser.MethodsContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitMethods(JasminParser.MethodsContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
 	@Override public void enterMethod_spec(JasminParser.Method_specContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -796,49 +784,37 @@ public class JasminBaseListener implements JasminListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterDefmethod(JasminParser.DefmethodContext ctx) { }
+	@Override public void enterInstructionStatement(JasminParser.InstructionStatementContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitDefmethod(JasminParser.DefmethodContext ctx) { }
+	@Override public void exitInstructionStatement(JasminParser.InstructionStatementContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterEndmethod(JasminParser.EndmethodContext ctx) { }
+	@Override public void enterDirectiveStatement(JasminParser.DirectiveStatementContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitEndmethod(JasminParser.EndmethodContext ctx) { }
+	@Override public void exitDirectiveStatement(JasminParser.DirectiveStatementContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterStatements(JasminParser.StatementsContext ctx) { }
+	@Override public void enterLabelStatement(JasminParser.LabelStatementContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitStatements(JasminParser.StatementsContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterStatement(JasminParser.StatementContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitStatement(JasminParser.StatementContext ctx) { }
+	@Override public void exitLabelStatement(JasminParser.LabelStatementContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -1072,13 +1048,109 @@ public class JasminBaseListener implements JasminListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterSimple_instruction(JasminParser.Simple_instructionContext ctx) { }
+	@Override public void enterOpcode(JasminParser.OpcodeContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitSimple_instruction(JasminParser.Simple_instructionContext ctx) { }
+	@Override public void exitOpcode(JasminParser.OpcodeContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterOpcodeInt(JasminParser.OpcodeIntContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitOpcodeInt(JasminParser.OpcodeIntContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterOpcodeIntInt(JasminParser.OpcodeIntIntContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitOpcodeIntInt(JasminParser.OpcodeIntIntContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterOpcodeFloat(JasminParser.OpcodeFloatContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitOpcodeFloat(JasminParser.OpcodeFloatContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterOpcodeWord(JasminParser.OpcodeWordContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitOpcodeWord(JasminParser.OpcodeWordContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterOpcodeWordInt(JasminParser.OpcodeWordIntContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitOpcodeWordInt(JasminParser.OpcodeWordIntContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterOpcodeWordWord(JasminParser.OpcodeWordWordContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitOpcodeWordWord(JasminParser.OpcodeWordWordContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterOpcodeString(JasminParser.OpcodeStringContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitOpcodeString(JasminParser.OpcodeStringContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterOpcodeRelative(JasminParser.OpcodeRelativeContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitOpcodeRelative(JasminParser.OpcodeRelativeContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *

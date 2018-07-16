@@ -638,16 +638,6 @@ public interface JasminListener extends ParseTreeListener {
 	 */
 	void exitInner_outer(JasminParser.Inner_outerContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link JasminParser#methods}.
-	 * @param ctx the parse tree
-	 */
-	void enterMethods(JasminParser.MethodsContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link JasminParser#methods}.
-	 * @param ctx the parse tree
-	 */
-	void exitMethods(JasminParser.MethodsContext ctx);
-	/**
 	 * Enter a parse tree produced by {@link JasminParser#method_spec}.
 	 * @param ctx the parse tree
 	 */
@@ -658,45 +648,41 @@ public interface JasminListener extends ParseTreeListener {
 	 */
 	void exitMethod_spec(JasminParser.Method_specContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link JasminParser#defmethod}.
+	 * Enter a parse tree produced by the {@code InstructionStatement}
+	 * labeled alternative in {@link JasminParser#statement}.
 	 * @param ctx the parse tree
 	 */
-	void enterDefmethod(JasminParser.DefmethodContext ctx);
+	void enterInstructionStatement(JasminParser.InstructionStatementContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link JasminParser#defmethod}.
+	 * Exit a parse tree produced by the {@code InstructionStatement}
+	 * labeled alternative in {@link JasminParser#statement}.
 	 * @param ctx the parse tree
 	 */
-	void exitDefmethod(JasminParser.DefmethodContext ctx);
+	void exitInstructionStatement(JasminParser.InstructionStatementContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link JasminParser#endmethod}.
+	 * Enter a parse tree produced by the {@code DirectiveStatement}
+	 * labeled alternative in {@link JasminParser#statement}.
 	 * @param ctx the parse tree
 	 */
-	void enterEndmethod(JasminParser.EndmethodContext ctx);
+	void enterDirectiveStatement(JasminParser.DirectiveStatementContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link JasminParser#endmethod}.
+	 * Exit a parse tree produced by the {@code DirectiveStatement}
+	 * labeled alternative in {@link JasminParser#statement}.
 	 * @param ctx the parse tree
 	 */
-	void exitEndmethod(JasminParser.EndmethodContext ctx);
+	void exitDirectiveStatement(JasminParser.DirectiveStatementContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link JasminParser#statements}.
+	 * Enter a parse tree produced by the {@code LabelStatement}
+	 * labeled alternative in {@link JasminParser#statement}.
 	 * @param ctx the parse tree
 	 */
-	void enterStatements(JasminParser.StatementsContext ctx);
+	void enterLabelStatement(JasminParser.LabelStatementContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link JasminParser#statements}.
+	 * Exit a parse tree produced by the {@code LabelStatement}
+	 * labeled alternative in {@link JasminParser#statement}.
 	 * @param ctx the parse tree
 	 */
-	void exitStatements(JasminParser.StatementsContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link JasminParser#statement}.
-	 * @param ctx the parse tree
-	 */
-	void enterStatement(JasminParser.StatementContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link JasminParser#statement}.
-	 * @param ctx the parse tree
-	 */
-	void exitStatement(JasminParser.StatementContext ctx);
+	void exitLabelStatement(JasminParser.LabelStatementContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link JasminParser#label}.
 	 * @param ctx the parse tree
@@ -888,15 +874,113 @@ public interface JasminListener extends ParseTreeListener {
 	 */
 	void exitInstruction(JasminParser.InstructionContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link JasminParser#simple_instruction}.
+	 * Enter a parse tree produced by the {@code Opcode}
+	 * labeled alternative in {@link JasminParser#simple_instruction}.
 	 * @param ctx the parse tree
 	 */
-	void enterSimple_instruction(JasminParser.Simple_instructionContext ctx);
+	void enterOpcode(JasminParser.OpcodeContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link JasminParser#simple_instruction}.
+	 * Exit a parse tree produced by the {@code Opcode}
+	 * labeled alternative in {@link JasminParser#simple_instruction}.
 	 * @param ctx the parse tree
 	 */
-	void exitSimple_instruction(JasminParser.Simple_instructionContext ctx);
+	void exitOpcode(JasminParser.OpcodeContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code OpcodeInt}
+	 * labeled alternative in {@link JasminParser#simple_instruction}.
+	 * @param ctx the parse tree
+	 */
+	void enterOpcodeInt(JasminParser.OpcodeIntContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code OpcodeInt}
+	 * labeled alternative in {@link JasminParser#simple_instruction}.
+	 * @param ctx the parse tree
+	 */
+	void exitOpcodeInt(JasminParser.OpcodeIntContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code OpcodeIntInt}
+	 * labeled alternative in {@link JasminParser#simple_instruction}.
+	 * @param ctx the parse tree
+	 */
+	void enterOpcodeIntInt(JasminParser.OpcodeIntIntContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code OpcodeIntInt}
+	 * labeled alternative in {@link JasminParser#simple_instruction}.
+	 * @param ctx the parse tree
+	 */
+	void exitOpcodeIntInt(JasminParser.OpcodeIntIntContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code OpcodeFloat}
+	 * labeled alternative in {@link JasminParser#simple_instruction}.
+	 * @param ctx the parse tree
+	 */
+	void enterOpcodeFloat(JasminParser.OpcodeFloatContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code OpcodeFloat}
+	 * labeled alternative in {@link JasminParser#simple_instruction}.
+	 * @param ctx the parse tree
+	 */
+	void exitOpcodeFloat(JasminParser.OpcodeFloatContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code OpcodeWord}
+	 * labeled alternative in {@link JasminParser#simple_instruction}.
+	 * @param ctx the parse tree
+	 */
+	void enterOpcodeWord(JasminParser.OpcodeWordContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code OpcodeWord}
+	 * labeled alternative in {@link JasminParser#simple_instruction}.
+	 * @param ctx the parse tree
+	 */
+	void exitOpcodeWord(JasminParser.OpcodeWordContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code OpcodeWordInt}
+	 * labeled alternative in {@link JasminParser#simple_instruction}.
+	 * @param ctx the parse tree
+	 */
+	void enterOpcodeWordInt(JasminParser.OpcodeWordIntContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code OpcodeWordInt}
+	 * labeled alternative in {@link JasminParser#simple_instruction}.
+	 * @param ctx the parse tree
+	 */
+	void exitOpcodeWordInt(JasminParser.OpcodeWordIntContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code OpcodeWordWord}
+	 * labeled alternative in {@link JasminParser#simple_instruction}.
+	 * @param ctx the parse tree
+	 */
+	void enterOpcodeWordWord(JasminParser.OpcodeWordWordContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code OpcodeWordWord}
+	 * labeled alternative in {@link JasminParser#simple_instruction}.
+	 * @param ctx the parse tree
+	 */
+	void exitOpcodeWordWord(JasminParser.OpcodeWordWordContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code OpcodeString}
+	 * labeled alternative in {@link JasminParser#simple_instruction}.
+	 * @param ctx the parse tree
+	 */
+	void enterOpcodeString(JasminParser.OpcodeStringContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code OpcodeString}
+	 * labeled alternative in {@link JasminParser#simple_instruction}.
+	 * @param ctx the parse tree
+	 */
+	void exitOpcodeString(JasminParser.OpcodeStringContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code OpcodeRelative}
+	 * labeled alternative in {@link JasminParser#simple_instruction}.
+	 * @param ctx the parse tree
+	 */
+	void enterOpcodeRelative(JasminParser.OpcodeRelativeContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code OpcodeRelative}
+	 * labeled alternative in {@link JasminParser#simple_instruction}.
+	 * @param ctx the parse tree
+	 */
+	void exitOpcodeRelative(JasminParser.OpcodeRelativeContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link JasminParser#complex_instruction}.
 	 * @param ctx the parse tree

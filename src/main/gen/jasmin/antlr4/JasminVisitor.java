@@ -389,41 +389,32 @@ public interface JasminVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitInner_outer(JasminParser.Inner_outerContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link JasminParser#methods}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitMethods(JasminParser.MethodsContext ctx);
-	/**
 	 * Visit a parse tree produced by {@link JasminParser#method_spec}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
 	T visitMethod_spec(JasminParser.Method_specContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link JasminParser#defmethod}.
+	 * Visit a parse tree produced by the {@code InstructionStatement}
+	 * labeled alternative in {@link JasminParser#statement}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitDefmethod(JasminParser.DefmethodContext ctx);
+	T visitInstructionStatement(JasminParser.InstructionStatementContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link JasminParser#endmethod}.
+	 * Visit a parse tree produced by the {@code DirectiveStatement}
+	 * labeled alternative in {@link JasminParser#statement}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitEndmethod(JasminParser.EndmethodContext ctx);
+	T visitDirectiveStatement(JasminParser.DirectiveStatementContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link JasminParser#statements}.
+	 * Visit a parse tree produced by the {@code LabelStatement}
+	 * labeled alternative in {@link JasminParser#statement}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitStatements(JasminParser.StatementsContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link JasminParser#statement}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitStatement(JasminParser.StatementContext ctx);
+	T visitLabelStatement(JasminParser.LabelStatementContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link JasminParser#label}.
 	 * @param ctx the parse tree
@@ -539,11 +530,68 @@ public interface JasminVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitInstruction(JasminParser.InstructionContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link JasminParser#simple_instruction}.
+	 * Visit a parse tree produced by the {@code Opcode}
+	 * labeled alternative in {@link JasminParser#simple_instruction}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitSimple_instruction(JasminParser.Simple_instructionContext ctx);
+	T visitOpcode(JasminParser.OpcodeContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code OpcodeInt}
+	 * labeled alternative in {@link JasminParser#simple_instruction}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitOpcodeInt(JasminParser.OpcodeIntContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code OpcodeIntInt}
+	 * labeled alternative in {@link JasminParser#simple_instruction}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitOpcodeIntInt(JasminParser.OpcodeIntIntContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code OpcodeFloat}
+	 * labeled alternative in {@link JasminParser#simple_instruction}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitOpcodeFloat(JasminParser.OpcodeFloatContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code OpcodeWord}
+	 * labeled alternative in {@link JasminParser#simple_instruction}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitOpcodeWord(JasminParser.OpcodeWordContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code OpcodeWordInt}
+	 * labeled alternative in {@link JasminParser#simple_instruction}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitOpcodeWordInt(JasminParser.OpcodeWordIntContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code OpcodeWordWord}
+	 * labeled alternative in {@link JasminParser#simple_instruction}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitOpcodeWordWord(JasminParser.OpcodeWordWordContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code OpcodeString}
+	 * labeled alternative in {@link JasminParser#simple_instruction}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitOpcodeString(JasminParser.OpcodeStringContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code OpcodeRelative}
+	 * labeled alternative in {@link JasminParser#simple_instruction}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitOpcodeRelative(JasminParser.OpcodeRelativeContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link JasminParser#complex_instruction}.
 	 * @param ctx the parse tree
