@@ -7,8 +7,8 @@ import java.util.List;
 
 public class AstMethodSpec extends AstNode {
 
-  private final String name;
-  private final String descriptor;
+  public final String name;
+  public final String descriptor;
 
   public AstMethodSpec(SourceLocation srcLocation, String methodNameAndDescriptor, List<AstStatement> statements) {
     super(srcLocation);

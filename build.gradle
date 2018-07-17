@@ -16,6 +16,7 @@ dependencies {
     )
 
     implementation 'org.antlr:antlr4:4.7.1'
+    implementation 'org.ow2.asm:asm:6.2'
 }
 
 sourceSets {

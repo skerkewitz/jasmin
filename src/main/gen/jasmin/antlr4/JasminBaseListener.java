@@ -112,25 +112,25 @@ public class JasminBaseListener implements JasminListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterClass_spec(JasminParser.Class_specContext ctx) { }
+	@Override public void enterClassDeclaration(JasminParser.ClassDeclarationContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitClass_spec(JasminParser.Class_specContext ctx) { }
+	@Override public void exitClassDeclaration(JasminParser.ClassDeclarationContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterClassname(JasminParser.ClassnameContext ctx) { }
+	@Override public void enterInterfaceDeclaration(JasminParser.InterfaceDeclarationContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitClassname(JasminParser.ClassnameContext ctx) { }
+	@Override public void exitInterfaceDeclaration(JasminParser.InterfaceDeclarationContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *

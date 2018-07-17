@@ -59,17 +59,19 @@ public interface JasminVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitSource_spec(JasminParser.Source_specContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link JasminParser#class_spec}.
+	 * Visit a parse tree produced by the {@code ClassDeclaration}
+	 * labeled alternative in {@link JasminParser#class_spec}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitClass_spec(JasminParser.Class_specContext ctx);
+	T visitClassDeclaration(JasminParser.ClassDeclarationContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link JasminParser#classname}.
+	 * Visit a parse tree produced by the {@code InterfaceDeclaration}
+	 * labeled alternative in {@link JasminParser#class_spec}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitClassname(JasminParser.ClassnameContext ctx);
+	T visitInterfaceDeclaration(JasminParser.InterfaceDeclarationContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link JasminParser#access}.
 	 * @param ctx the parse tree

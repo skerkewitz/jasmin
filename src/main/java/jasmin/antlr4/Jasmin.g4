@@ -264,15 +264,12 @@ source_spec
 
 // ---- Class specification
 class_spec
-  : DCLASS a=access name=classname //SEP
+  : DCLASS a=access classname=Word          #ClassDeclaration
 //  {: classFile.setClass(name.str_val, (short)(a.int_val | RuntimeConstants.ACC_SUPER)); :}
-  | DINTERFACE a=access name=classname //SEP
+  | DINTERFACE a=access interfacename=Word  #InterfaceDeclaration
 //  {: classFile.setClass(name.str_val, (short)(a.int_val | RuntimeConstants.ACC_SUPER | RuntimeConstants.ACC_INTERFACE)); :}
   ;
 
-classname
-  : w=Word
-  ;
 
 access: access_list;
 access_list: access_item+;
@@ -300,7 +297,7 @@ access_item
 
 // ---- Superclass specification
 super_spec
-  : DSUPER name=classname //SEP
+  : DSUPER classname=Word //SEP
   ;
 
 // ---- Implements specification
@@ -315,7 +312,7 @@ implements_list
   ;
 
 implements_spec
-  : DIMPLEMENTS name=classname //SEP
+  : DIMPLEMENTS classname=Word //SEP
   ;
 
 // ---- Annotation specification
@@ -346,15 +343,15 @@ ann_cls_expr
   ;
 
 ann_clf_expr
-  : VISIBLE name=classname //SEP
-  | INVISIBLE name=classname //SEP
+  : VISIBLE classname=Word //SEP
+  | INVISIBLE classname=Word //SEP
   ;
 
 ann_met_expr
-  : VISIBLE name=classname //SEP
-  | INVISIBLE name=classname //SEP
-  | VISIBLEPARAM n=Int name=classname //SEP
-  | INVISIBLEPARAM n=Int name=classname //SEP
+  : VISIBLE classname=Word //SEP
+  | INVISIBLE classname=Word //SEP
+  | VISIBLEPARAM n=Int classname=Word //SEP
+  | INVISIBLEPARAM n=Int classname=Word //SEP
   ;
 
 ann_arglist: ann_arg_list | /* empty */ ;
@@ -502,14 +499,14 @@ inner_name
   ;
 
 inner_inner
-  : INNER w=classname
+  : INNER classname=Word
 //  {: RESULT.str_val = w.str_val; :}
   | /* empty */
 //  {: RESULT.str_val = null; :}
   ;
 
 inner_outer
-  : OUTER w=classname
+  : OUTER classname=Word
 //  {: RESULT.str_val = w.str_val; :}
   | /* empty */
 //  {: RESULT.str_val = null; :}
@@ -637,15 +634,15 @@ line_expr
 
 // .throws <class>
 throws_expr
-  : s=classname
+  : classname=Word
 //  {: classFile.addThrow(s.str_val); :}
   ;
 
 // .catch <class> from <label1> to <label2> using <branchlab>
 catch_expr
-  : aclass=classname FROM fromlab=Word TO tolab=Word USING branchlab=Word
+  : classname=Word FROM fromlab=Word TO tolab=Word USING branchlab=Word
 //  {: classFile.addCatch(aclass.str_val, fromlab.str_val, tolab.str_val, branchlab.str_val); :}
-  | aclass=classname FROM fromoff=Int TO tooff=Int USING branchoff=Int
+  | classname=Word FROM fromoff=Int TO tooff=Int USING branchoff=Int
 //  {: classFile.addCatch(aclass.str_val, fromoff.int_val, tooff.int_val, branchoff.int_val); :}
   ;
 
@@ -775,4 +772,4 @@ fragment ID_START
     | [a-z]
     ;
 
-fragment ID_CONTINUE: ID_START | [0-9./>()];
+fragment ID_CONTINUE: ID_START | [0-9./>();];

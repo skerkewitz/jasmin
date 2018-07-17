@@ -88,25 +88,29 @@ public interface JasminListener extends ParseTreeListener {
 	 */
 	void exitSource_spec(JasminParser.Source_specContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link JasminParser#class_spec}.
+	 * Enter a parse tree produced by the {@code ClassDeclaration}
+	 * labeled alternative in {@link JasminParser#class_spec}.
 	 * @param ctx the parse tree
 	 */
-	void enterClass_spec(JasminParser.Class_specContext ctx);
+	void enterClassDeclaration(JasminParser.ClassDeclarationContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link JasminParser#class_spec}.
+	 * Exit a parse tree produced by the {@code ClassDeclaration}
+	 * labeled alternative in {@link JasminParser#class_spec}.
 	 * @param ctx the parse tree
 	 */
-	void exitClass_spec(JasminParser.Class_specContext ctx);
+	void exitClassDeclaration(JasminParser.ClassDeclarationContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link JasminParser#classname}.
+	 * Enter a parse tree produced by the {@code InterfaceDeclaration}
+	 * labeled alternative in {@link JasminParser#class_spec}.
 	 * @param ctx the parse tree
 	 */
-	void enterClassname(JasminParser.ClassnameContext ctx);
+	void enterInterfaceDeclaration(JasminParser.InterfaceDeclarationContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link JasminParser#classname}.
+	 * Exit a parse tree produced by the {@code InterfaceDeclaration}
+	 * labeled alternative in {@link JasminParser#class_spec}.
 	 * @param ctx the parse tree
 	 */
-	void exitClassname(JasminParser.ClassnameContext ctx);
+	void exitInterfaceDeclaration(JasminParser.InterfaceDeclarationContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link JasminParser#access}.
 	 * @param ctx the parse tree

@@ -73,14 +73,14 @@ public class JasminBaseVisitor<T> extends AbstractParseTreeVisitor<T> implements
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitClass_spec(JasminParser.Class_specContext ctx) { return visitChildren(ctx); }
+	@Override public T visitClassDeclaration(JasminParser.ClassDeclarationContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitClassname(JasminParser.ClassnameContext ctx) { return visitChildren(ctx); }
+	@Override public T visitInterfaceDeclaration(JasminParser.InterfaceDeclarationContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *

@@ -6,7 +6,12 @@ import java.util.List;
 
 public class AstCompilationUnit extends AstNode {
 
-  public AstCompilationUnit(SourceLocation srcLocation, AstNode header, List<AstMethodSpec> methods) {
+  public final AstJasminHeader header;
+  public final List<AstMethodSpec> methods;
+
+  public AstCompilationUnit(SourceLocation srcLocation, AstJasminHeader header, List<AstMethodSpec> methods) {
     super(srcLocation);
+    this.header = header;
+    this.methods = methods;
   }
 }
