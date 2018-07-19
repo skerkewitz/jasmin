@@ -3,11 +3,13 @@ package jasmin.ast;
 import jasmin.InsnInfo;
 import jasmin.antlr4.SourceLocation;
 
-public class AstOpcode extends AstInstruction {
+public class AstOpcodeWord extends AstInstruction {
   public final InsnInfo insnInfo;
+  public final String w;
 
-  public AstOpcode(SourceLocation sourceLocation, InsnInfo insnInfo) {
+  public AstOpcodeWord(SourceLocation sourceLocation, InsnInfo insnInfo, String w) {
     super(sourceLocation);
     this.insnInfo = insnInfo;
+    this.w = w;
   }
 }

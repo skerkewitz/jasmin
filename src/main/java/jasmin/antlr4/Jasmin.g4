@@ -1,7 +1,53 @@
 // Grammer definition for the Java human readable assembler file called Jasmin
 grammar Jasmin;
 
+
+// Zero operand instruction
 Insn
+  : 'nop'| 'aconst_null'| 'iconst_m1'| 'iconst_0'| 'iconst_1'| 'iconst_2'| 'iconst_3'| 'iconst_4'| 'iconst_5'
+  | 'lconst_0'| 'lconst_1'| 'fconst_0'| 'fconst_1'| 'fconst_2'| 'dconst_0'| 'dconst_1'| 'iaload'| 'laload'
+  | 'faload'| 'daload'| 'aaload'| 'baload'| 'caload'| 'saload'| 'iastore'| 'lastore'| 'fastore'| 'dastore'
+  | 'aastore'| 'bastore'| 'castore'| 'sastore'| 'pop'| 'pop2'| 'dup'| 'dup_x1'| 'dup_x2'| 'dup2'| 'dup2_x1'| 'dup2_x2'
+  | 'swap'| 'iadd'| 'ladd'| 'fadd'| 'dadd'| 'isub'| 'lsub'| 'fsub'| 'dsub'| 'imul'| 'lmul'| 'fmul'| 'dmul'| 'idiv'| 'ldiv'
+  | 'fdiv'| 'ddiv'| 'irem'| 'lrem'| 'frem'| 'drem'| 'ineg'| 'lneg'| 'fneg'| 'dneg'| 'ishl'| 'lshl'| 'ishr'| 'lshr'| 'iushr'
+  | 'lushr'| 'iand'| 'land'| 'ior'| 'lor'| 'ixor'| 'lxor'| 'i2l'| 'i2f'| 'i2d'| 'l2i'| 'l2f'| 'l2d'| 'f2i'| 'f2l'| 'f2d'| 'd2i'
+  | 'd2l'| 'd2f'| 'i2b'| 'i2c'| 'i2s'| 'lcmp'| 'fcmpl'| 'fcmpg'| 'dcmpl'| 'dcmpg'| 'ireturn'| 'lreturn'| 'freturn'
+  | 'dreturn'| 'areturn'| 'return'| 'arraylength'| 'athrow'| 'monitorenter'| 'monitorexit'
+  ;
+
+// Operands with just one int
+InsnInt
+  : 'bipush' | 'sipush' | 'newarray'
+  ;
+
+// Operands with a single local var index
+InsnVar
+  : 'iload' | 'lload' | 'fload' | 'dload' | 'aload' | 'istore' | 'lstore' | 'fstore' | 'dstore' | 'astore' | 'ret'
+  ;
+
+// Operands with a string that is a class name
+InsnType
+  : 'new' | 'anewarray' | 'checkcast' | 'instanceof'
+  ;
+
+// Operands that access (read or write) a instance fields
+InsnField
+  : 'getstatic' | 'putstatic' | 'getfield' | 'putfield'
+  ;
+
+// Operands that invoke a method need a class and a method+descriptor
+InsnInvoke
+  : 'invokevirtual' | 'invokespecial' | 'invokestatic' | 'invokeinterface'
+  ;
+
+// Operand that jumps to a label.
+InsnJump
+  : 'ifeq' | 'ifne' | 'iflt' | 'ifge' | 'ifgt' | 'ifle' | 'if_icmpeq' | 'if_icmpne' | 'if_icmplt' | 'if_icmpge'
+  | 'if_icmpgt' | 'if_icmple' | 'if_acmpeq' | 'if_acmpne' | 'goto' | 'jsr' | 'ifnull' | 'ifnonnull'
+  ;
+
+
+Insn_
   : 'aaload' | 'aastore' | 'aconst_null'
   | 'aload' | 'aload_w' | 'aload_0'
   | 'aload_1' | 'aload_2' | 'aload_3'

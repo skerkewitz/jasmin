@@ -73,12 +73,12 @@ public class Builder extends JasminBaseVisitor<AstNode> {
 
   @Override
   public AstNode visitOpcode(JasminParser.OpcodeContext ctx) {
-    return new AstOpcode(SourceLocation.fromContext(ctx), InsnInfo.get(ctx.getText()));
+    return new AstOpcode(SourceLocation.fromContext(ctx), InsnInfo.get(ctx.i.getText()));
   }
 
   @Override
   public AstNode visitOpcodeInt(JasminParser.OpcodeIntContext ctx) {
-    return new AstOpcode(SourceLocation.fromContext(ctx), InsnInfo.get(ctx.getText()));
+    return new AstOpcodeInt(SourceLocation.fromContext(ctx), InsnInfo.get(ctx.i.getText()), Integer.parseInt(ctx.n.getText()));
   }
 
   @Override
@@ -93,7 +93,7 @@ public class Builder extends JasminBaseVisitor<AstNode> {
 
   @Override
   public AstNode visitOpcodeWord(JasminParser.OpcodeWordContext ctx) {
-    return new AstOpcode(SourceLocation.fromContext(ctx), InsnInfo.get(ctx.getText()));
+    return new AstOpcodeWord(SourceLocation.fromContext(ctx), InsnInfo.get(ctx.i.getText()), ctx.n.getText());
   }
 
   @Override

@@ -1,11 +1,11 @@
 package jasmin.parser;
 
-import jasmin.ast.AstCompilationUnit;
-import jasmin.ast.AstNode;
-import jasmin.ast.Builder;
+import jasmin.InsnInfo;
+import jasmin.ast.*;
 import org.antlr.v4.runtime.tree.ParseTree;
 import org.junit.jupiter.api.Test;
 import org.objectweb.asm.ClassWriter;
+import org.objectweb.asm.MethodVisitor;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -41,7 +41,30 @@ public class TestParser {
 
 
     for (var method : root_node.methods) {
-      classWriter.visitMethod(ACC_PUBLIC, method.name, method.descriptor, null, null);
+      MethodVisitor methodVisitor = classWriter.visitMethod(ACC_PUBLIC, method.name, method.descriptor, null, null);
+
+      for (var statements : method.statements) {
+
+        if (statements instanceof AstOpcode) {
+          var opcode = (AstOpcode) statements;
+           System.out.println(opcode.insnInfo.name);
+          methodVisitor.visitInsn(opcode.insnInfo.opcode);
+        }
+        else if (statements instanceof AstOpcodeInt) {
+          var opcode = (AstOpcodeInt) statements;
+          System.out.println(opcode.insnInfo.name);
+          methodVisitor.visitIntInsn(opcode.insnInfo.opcode, opcode.n);
+        }
+        else if (statements instanceof AstOpcodeWord) {
+          var opcode = (AstOpcodeWord) statements;
+          System.out.println(opcode.insnInfo.name);
+          methodVisitor.visitIntInsn(opcode.insnInfo.opcode, opcode.w);
+        }
+
+
+//        statements.
+
+      }
     }
 
 
